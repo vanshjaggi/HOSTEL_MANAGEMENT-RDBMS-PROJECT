@@ -4,7 +4,7 @@ import os
 from tkinter import *
 import mysql.connector
 
-userlog=mysql.connector.connect(host="localhost",user="root",passwd="vansh",database="hotel_management")
+userlog=mysql.connector.connect(host="localhost",user="root",passwd="yourpassword",database="hotel_management")
 C=userlog.cursor()
 
 def SCREEN_EXIT(SCREEN):
