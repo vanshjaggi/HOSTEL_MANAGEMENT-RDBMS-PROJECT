@@ -1,0 +1,119 @@
+mysql> use hostel_management;
+Database changed
+mysql> show tables;
++-----------------------------+
+| Tables_in_hostel_management |
++-----------------------------+
+| department                  |
+| hostel                      |
+| mess                        |
+| room                        |
+| student                     |
++-----------------------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from department;
++-----------+------------------------+----------------------+
+| DEPT_CODE | DEPT_NAME              | FACULTY_ADVISOR      |
++-----------+------------------------+----------------------+
+|       101 | Computer Science       | Dr. John Smith       |
+|       102 | Electrical Engineering | Dr. Emily Johnson    |
+|       103 | Mechanical Engineering | Dr. Michael Williams |
+|       104 | Civil Engineering      | Dr. Sarah Brown      |
+|       105 | Mathematics            | Dr. David Wilson     |
++-----------+------------------------+----------------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from hostel;
++--------------+--------------------+--------+---------+
+| HOSTEL_NAME  | WARDEN             | GENDER | MESS_ID |
++--------------+--------------------+--------+---------+
+| Alpha Hostel | Dr. Samantha White | Male   |       1 |
+| Beta Hostel  | Dr. Peter Green    | Female |       2 |
+| Gamma Hostel | Dr. Rachel Brown   | Male   |       3 |
++--------------+--------------------+--------+---------+
+3 rows in set (0.00 sec)
+
+mysql> select * from mess;
++---------+----------------+---------------+-------------------------+
+| MESS_ID | MESS_TYPE      | DAILY_CHARGES | CONTRACTOR              |
++---------+----------------+---------------+-------------------------+
+|       1 | Vegetarian     |           150 | Green Foods Pvt. Ltd.   |
+|       2 | Non-Vegetarian |           200 | Delight Foods Pvt. Ltd. |
+|       3 | Vegan          |           180 | Health Foods Pvt. Ltd.  |
++---------+----------------+---------------+-------------------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from room;
++---------+---------+---------+--------------+
+| ROOM_NO | ALLOTED | ROLL_NO | HOSTEL_NAME  |
++---------+---------+---------+--------------+
+|     101 | Y       |    1001 | Alpha Hostel |
+|     102 | N       |    NULL | Alpha Hostel |
+|     103 | N       |    NULL | Alpha Hostel |
+|     104 | Y       |    1002 | Alpha Hostel |
+|     105 | Y       |    1003 | Alpha Hostel |
+|     106 | N       |    NULL | Alpha Hostel |
+|     107 | N       |    NULL | Alpha Hostel |
+|     108 | N       |    NULL | Alpha Hostel |
+|     109 | Y       |    1004 | Alpha Hostel |
+|     110 | Y       |    1005 | Alpha Hostel |
+|     111 | N       |    NULL | Alpha Hostel |
+|     112 | N       |    NULL | Alpha Hostel |
+|     113 | N       |    NULL | Alpha Hostel |
+|     114 | N       |    NULL | Alpha Hostel |
+|     115 | Y       |    1006 | Alpha Hostel |
+|     116 | Y       |    1007 | Alpha Hostel |
+|     117 | Y       |    1008 | Alpha Hostel |
+|     118 | Y       |    1009 | Alpha Hostel |
+|     119 | Y       |    1010 | Alpha Hostel |
+|     120 | N       |    NULL | Alpha Hostel |
+|     201 | Y       |    1011 | Beta Hostel  |
+|     202 | N       |    NULL | Beta Hostel  |
+|     203 | Y       |    1012 | Beta Hostel  |
+|     204 | N       |    NULL | Beta Hostel  |
+|     205 | Y       |    1013 | Beta Hostel  |
+|     206 | N       |    NULL | Beta Hostel  |
+|     207 | Y       |    1014 | Beta Hostel  |
+|     208 | N       |    NULL | Beta Hostel  |
+|     209 | N       |    NULL | Beta Hostel  |
+|     210 | Y       |    1015 | Beta Hostel  |
+|     301 | Y       |    1016 | Gamma Hostel |
+|     302 | N       |    NULL | Gamma Hostel |
+|     303 | Y       |    1017 | Gamma Hostel |
+|     304 | N       |    NULL | Gamma Hostel |
+|     305 | Y       |    1018 | Gamma Hostel |
+|     306 | N       |    NULL | Gamma Hostel |
+|     307 | Y       |    1019 | Gamma Hostel |
+|     308 | N       |    NULL | Gamma Hostel |
+|     309 | N       |    NULL | Gamma Hostel |
+|     310 | Y       |    1020 | Gamma Hostel |
++---------+---------+---------+--------------+
+40 rows in set (0.00 sec)
+
+mysql> select * from student;
++---------+-------------------+--------+-----------+
+| ROLL_NO | NAME              | GENDER | DEPT_CODE |
++---------+-------------------+--------+-----------+
+|    1001 | John Doe          | Male   |       101 |
+|    1002 | Jane Smith        | Female |       101 |
+|    1003 | Michael Johnson   | Male   |       102 |
+|    1004 | Emily Williams    | Female |       102 |
+|    1005 | Christopher Brown | Male   |       103 |
+|    1006 | Sarah Martinez    | Female |       103 |
+|    1007 | Daniel Taylor     | Male   |       104 |
+|    1008 | Olivia Garcia     | Female |       104 |
+|    1009 | Matthew Lee       | Male   |       105 |
+|    1010 | Emma Rodriguez    | Female |       105 |
+|    1011 | David Hernandez   | Male   |       101 |
+|    1012 | Sophia Lopez      | Female |       101 |
+|    1013 | James Gonzalez    | Male   |       102 |
+|    1014 | Ava Wilson        | Female |       102 |
+|    1015 | Logan Perez       | Male   |       103 |
+|    1016 | Isabella Moore    | Female |       103 |
+|    1017 | Benjamin Taylor   | Male   |       104 |
+|    1018 | Mia King          | Female |       104 |
+|    1019 | Ethan Rivera      | Male   |       105 |
+|    1020 | Charlotte Scott   | Female |       105 |
++---------+-------------------+--------+-----------+
+20 rows in set (0.00 sec)

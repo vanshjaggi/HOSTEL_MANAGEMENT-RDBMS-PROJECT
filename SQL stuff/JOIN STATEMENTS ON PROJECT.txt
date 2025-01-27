@@ -1,0 +1,227 @@
+mysql> USE HOSTEL_MANAGEMENT;
+Database changed
+mysql> -- INNER JOIN
+mysql> SELECT ROLL_NO, NAME, GENDER, department.DEPT_CODE, department.DEPT_NAME, department.FACULTY_ADVISOR
+    -> FROM student
+    -> INNER JOIN department ON student.DEPT_CODE = department.DEPT_CODE;
++---------+-------------------+--------+-----------+------------------------+----------------------+
+| ROLL_NO | NAME              | GENDER | DEPT_CODE | DEPT_NAME              | FACULTY_ADVISOR      |
++---------+-------------------+--------+-----------+------------------------+----------------------+
+|    1001 | John Doe          | Male   |       101 | Computer Science       | Dr. John Smith       |
+|    1002 | Jane Smith        | Female |       101 | Computer Science       | Dr. John Smith       |
+|    1011 | David Hernandez   | Male   |       101 | Computer Science       | Dr. John Smith       |
+|    1012 | Sophia Lopez      | Female |       101 | Computer Science       | Dr. John Smith       |
+|    1003 | Michael Johnson   | Male   |       102 | Electrical Engineering | Dr. Emily Johnson    |
+|    1004 | Emily Williams    | Female |       102 | Electrical Engineering | Dr. Emily Johnson    |
+|    1013 | James Gonzalez    | Male   |       102 | Electrical Engineering | Dr. Emily Johnson    |
+|    1014 | Ava Wilson        | Female |       102 | Electrical Engineering | Dr. Emily Johnson    |
+|    1005 | Christopher Brown | Male   |       103 | Mechanical Engineering | Dr. Michael Williams |
+|    1006 | Sarah Martinez    | Female |       103 | Mechanical Engineering | Dr. Michael Williams |
+|    1015 | Logan Perez       | Male   |       103 | Mechanical Engineering | Dr. Michael Williams |
+|    1016 | Isabella Moore    | Female |       103 | Mechanical Engineering | Dr. Michael Williams |
+|    1007 | Daniel Taylor     | Male   |       104 | Civil Engineering      | Dr. Sarah Brown      |
+|    1008 | Olivia Garcia     | Female |       104 | Civil Engineering      | Dr. Sarah Brown      |
+|    1017 | Benjamin Taylor   | Male   |       104 | Civil Engineering      | Dr. Sarah Brown      |
+|    1018 | Mia King          | Female |       104 | Civil Engineering      | Dr. Sarah Brown      |
+|    1009 | Matthew Lee       | Male   |       105 | Mathematics            | Dr. David Wilson     |
+|    1010 | Emma Rodriguez    | Female |       105 | Mathematics            | Dr. David Wilson     |
+|    1019 | Ethan Rivera      | Male   |       105 | Mathematics            | Dr. David Wilson     |
+|    1020 | Charlotte Scott   | Female |       105 | Mathematics            | Dr. David Wilson     |
++---------+-------------------+--------+-----------+------------------------+----------------------+
+20 rows in set (0.00 sec)
+
+mysql>
+mysql> -- LEFT OUTER JOIN
+mysql> SELECT ROOM.ROOM_NO,ROOM.HOSTEL_NAME,STUDENT.ROLL_NO,NAME,GENDER
+    -> from STUDENT
+    -> LEFT JOIN ROOM ON ROOM.ROLL_NO = STUDENT.ROLL_NO;
++---------+--------------+---------+-------------------+--------+
+| ROOM_NO | HOSTEL_NAME  | ROLL_NO | NAME              | GENDER |
++---------+--------------+---------+-------------------+--------+
+|     101 | Alpha Hostel |    1001 | John Doe          | Male   |
+|     104 | Alpha Hostel |    1002 | Jane Smith        | Female |
+|     105 | Alpha Hostel |    1003 | Michael Johnson   | Male   |
+|     109 | Alpha Hostel |    1004 | Emily Williams    | Female |
+|     110 | Alpha Hostel |    1005 | Christopher Brown | Male   |
+|     115 | Alpha Hostel |    1006 | Sarah Martinez    | Female |
+|     116 | Alpha Hostel |    1007 | Daniel Taylor     | Male   |
+|     117 | Alpha Hostel |    1008 | Olivia Garcia     | Female |
+|     118 | Alpha Hostel |    1009 | Matthew Lee       | Male   |
+|     119 | Alpha Hostel |    1010 | Emma Rodriguez    | Female |
+|     201 | Beta Hostel  |    1011 | David Hernandez   | Male   |
+|     203 | Beta Hostel  |    1012 | Sophia Lopez      | Female |
+|     205 | Beta Hostel  |    1013 | James Gonzalez    | Male   |
+|     207 | Beta Hostel  |    1014 | Ava Wilson        | Female |
+|     210 | Beta Hostel  |    1015 | Logan Perez       | Male   |
+|     301 | Gamma Hostel |    1016 | Isabella Moore    | Female |
+|     303 | Gamma Hostel |    1017 | Benjamin Taylor   | Male   |
+|     305 | Gamma Hostel |    1018 | Mia King          | Female |
+|     307 | Gamma Hostel |    1019 | Ethan Rivera      | Male   |
+|     310 | Gamma Hostel |    1020 | Charlotte Scott   | Female |
++---------+--------------+---------+-------------------+--------+
+20 rows in set (0.00 sec)
+
+mysql>
+mysql> -- RIGHT OUTER JOIN
+mysql> SELECT ROOM.ROOM_NO,ROOM.HOSTEL_NAME,STUDENT.ROLL_NO,NAME,GENDER
+    -> from STUDENT
+    -> RIGHT JOIN ROOM ON ROOM.ROLL_NO = STUDENT.ROLL_NO;
++---------+--------------+---------+-------------------+--------+
+| ROOM_NO | HOSTEL_NAME  | ROLL_NO | NAME              | GENDER |
++---------+--------------+---------+-------------------+--------+
+|     101 | Alpha Hostel |    1001 | John Doe          | Male   |
+|     102 | Alpha Hostel |    NULL | NULL              | NULL   |
+|     103 | Alpha Hostel |    NULL | NULL              | NULL   |
+|     104 | Alpha Hostel |    1002 | Jane Smith        | Female |
+|     105 | Alpha Hostel |    1003 | Michael Johnson   | Male   |
+|     106 | Alpha Hostel |    NULL | NULL              | NULL   |
+|     107 | Alpha Hostel |    NULL | NULL              | NULL   |
+|     108 | Alpha Hostel |    NULL | NULL              | NULL   |
+|     109 | Alpha Hostel |    1004 | Emily Williams    | Female |
+|     110 | Alpha Hostel |    1005 | Christopher Brown | Male   |
+|     111 | Alpha Hostel |    NULL | NULL              | NULL   |
+|     112 | Alpha Hostel |    NULL | NULL              | NULL   |
+|     113 | Alpha Hostel |    NULL | NULL              | NULL   |
+|     114 | Alpha Hostel |    NULL | NULL              | NULL   |
+|     115 | Alpha Hostel |    1006 | Sarah Martinez    | Female |
+|     116 | Alpha Hostel |    1007 | Daniel Taylor     | Male   |
+|     117 | Alpha Hostel |    1008 | Olivia Garcia     | Female |
+|     118 | Alpha Hostel |    1009 | Matthew Lee       | Male   |
+|     119 | Alpha Hostel |    1010 | Emma Rodriguez    | Female |
+|     120 | Alpha Hostel |    NULL | NULL              | NULL   |
+|     201 | Beta Hostel  |    1011 | David Hernandez   | Male   |
+|     202 | Beta Hostel  |    NULL | NULL              | NULL   |
+|     203 | Beta Hostel  |    1012 | Sophia Lopez      | Female |
+|     204 | Beta Hostel  |    NULL | NULL              | NULL   |
+|     205 | Beta Hostel  |    1013 | James Gonzalez    | Male   |
+|     206 | Beta Hostel  |    NULL | NULL              | NULL   |
+|     207 | Beta Hostel  |    1014 | Ava Wilson        | Female |
+|     208 | Beta Hostel  |    NULL | NULL              | NULL   |
+|     209 | Beta Hostel  |    NULL | NULL              | NULL   |
+|     210 | Beta Hostel  |    1015 | Logan Perez       | Male   |
+|     301 | Gamma Hostel |    1016 | Isabella Moore    | Female |
+|     302 | Gamma Hostel |    NULL | NULL              | NULL   |
+|     303 | Gamma Hostel |    1017 | Benjamin Taylor   | Male   |
+|     304 | Gamma Hostel |    NULL | NULL              | NULL   |
+|     305 | Gamma Hostel |    1018 | Mia King          | Female |
+|     306 | Gamma Hostel |    NULL | NULL              | NULL   |
+|     307 | Gamma Hostel |    1019 | Ethan Rivera      | Male   |
+|     308 | Gamma Hostel |    NULL | NULL              | NULL   |
+|     309 | Gamma Hostel |    NULL | NULL              | NULL   |
+|     310 | Gamma Hostel |    1020 | Charlotte Scott   | Female |
++---------+--------------+---------+-------------------+--------+
+40 rows in set (0.00 sec)
+
+mysql>
+mysql> -- FULL OUTER JOIN
+mysql> SELECT ROOM.ROOM_NO,ROOM.HOSTEL_NAME,STUDENT.ROLL_NO,NAME,GENDER
+    -> from STUDENT
+    -> LEFT JOIN ROOM ON ROOM.ROLL_NO = STUDENT.ROLL_NO
+    -> UNION
+    -> SELECT ROOM.ROOM_NO,ROOM.HOSTEL_NAME,STUDENT.ROLL_NO,NAME,GENDER
+    -> from STUDENT
+    -> RIGHT JOIN ROOM ON ROOM.ROLL_NO = STUDENT.ROLL_NO
+    -> ORDER BY ROOM_NO;
++---------+--------------+---------+-------------------+--------+
+| ROOM_NO | HOSTEL_NAME  | ROLL_NO | NAME              | GENDER |
++---------+--------------+---------+-------------------+--------+
+|     101 | Alpha Hostel |    1001 | John Doe          | Male   |
+|     102 | Alpha Hostel |    NULL | NULL              | NULL   |
+|     103 | Alpha Hostel |    NULL | NULL              | NULL   |
+|     104 | Alpha Hostel |    1002 | Jane Smith        | Female |
+|     105 | Alpha Hostel |    1003 | Michael Johnson   | Male   |
+|     106 | Alpha Hostel |    NULL | NULL              | NULL   |
+|     107 | Alpha Hostel |    NULL | NULL              | NULL   |
+|     108 | Alpha Hostel |    NULL | NULL              | NULL   |
+|     109 | Alpha Hostel |    1004 | Emily Williams    | Female |
+|     110 | Alpha Hostel |    1005 | Christopher Brown | Male   |
+|     111 | Alpha Hostel |    NULL | NULL              | NULL   |
+|     112 | Alpha Hostel |    NULL | NULL              | NULL   |
+|     113 | Alpha Hostel |    NULL | NULL              | NULL   |
+|     114 | Alpha Hostel |    NULL | NULL              | NULL   |
+|     115 | Alpha Hostel |    1006 | Sarah Martinez    | Female |
+|     116 | Alpha Hostel |    1007 | Daniel Taylor     | Male   |
+|     117 | Alpha Hostel |    1008 | Olivia Garcia     | Female |
+|     118 | Alpha Hostel |    1009 | Matthew Lee       | Male   |
+|     119 | Alpha Hostel |    1010 | Emma Rodriguez    | Female |
+|     120 | Alpha Hostel |    NULL | NULL              | NULL   |
+|     201 | Beta Hostel  |    1011 | David Hernandez   | Male   |
+|     202 | Beta Hostel  |    NULL | NULL              | NULL   |
+|     203 | Beta Hostel  |    1012 | Sophia Lopez      | Female |
+|     204 | Beta Hostel  |    NULL | NULL              | NULL   |
+|     205 | Beta Hostel  |    1013 | James Gonzalez    | Male   |
+|     206 | Beta Hostel  |    NULL | NULL              | NULL   |
+|     207 | Beta Hostel  |    1014 | Ava Wilson        | Female |
+|     208 | Beta Hostel  |    NULL | NULL              | NULL   |
+|     209 | Beta Hostel  |    NULL | NULL              | NULL   |
+|     210 | Beta Hostel  |    1015 | Logan Perez       | Male   |
+|     301 | Gamma Hostel |    1016 | Isabella Moore    | Female |
+|     302 | Gamma Hostel |    NULL | NULL              | NULL   |
+|     303 | Gamma Hostel |    1017 | Benjamin Taylor   | Male   |
+|     304 | Gamma Hostel |    NULL | NULL              | NULL   |
+|     305 | Gamma Hostel |    1018 | Mia King          | Female |
+|     306 | Gamma Hostel |    NULL | NULL              | NULL   |
+|     307 | Gamma Hostel |    1019 | Ethan Rivera      | Male   |
+|     308 | Gamma Hostel |    NULL | NULL              | NULL   |
+|     309 | Gamma Hostel |    NULL | NULL              | NULL   |
+|     310 | Gamma Hostel |    1020 | Charlotte Scott   | Female |
++---------+--------------+---------+-------------------+--------+
+40 rows in set (0.00 sec)
+
+mysql>
+mysql> -- SELF CARTESIAN PRODUCT
+mysql> select A.MESS_ID,A.MESS_TYPE,B.DAILY_CHARGES,B.CONTRACTOR
+    -> FROM MESS as A, MESS as B;
++---------+----------------+---------------+-------------------------+
+| MESS_ID | MESS_TYPE      | DAILY_CHARGES | CONTRACTOR              |
++---------+----------------+---------------+-------------------------+
+|       3 | Vegan          |           150 | Green Foods Pvt. Ltd.   |
+|       2 | Non-Vegetarian |           150 | Green Foods Pvt. Ltd.   |
+|       1 | Vegetarian     |           150 | Green Foods Pvt. Ltd.   |
+|       3 | Vegan          |           200 | Delight Foods Pvt. Ltd. |
+|       2 | Non-Vegetarian |           200 | Delight Foods Pvt. Ltd. |
+|       1 | Vegetarian     |           200 | Delight Foods Pvt. Ltd. |
+|       3 | Vegan          |           180 | Health Foods Pvt. Ltd.  |
+|       2 | Non-Vegetarian |           180 | Health Foods Pvt. Ltd.  |
+|       1 | Vegetarian     |           180 | Health Foods Pvt. Ltd.  |
++---------+----------------+---------------+-------------------------+
+9 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
+
+use HOSTEL_MANAGEMENT;
+
+-- INNER JOIN
+SELECT ROLL_NO, NAME, GENDER, department.DEPT_CODE, department.DEPT_NAME, department.FACULTY_ADVISOR 
+FROM student 
+INNER JOIN department ON student.DEPT_CODE = department.DEPT_CODE;
+
+-- LEFT OUTER JOIN
+SELECT ROOM.ROOM_NO,ROOM.HOSTEL_NAME,STUDENT.ROLL_NO,NAME,GENDER
+from STUDENT
+LEFT JOIN ROOM ON ROOM.ROLL_NO = STUDENT.ROLL_NO;
+
+-- RIGHT OUTER JOIN
+SELECT ROOM.ROOM_NO,ROOM.HOSTEL_NAME,STUDENT.ROLL_NO,NAME,GENDER
+from STUDENT
+RIGHT JOIN ROOM ON ROOM.ROLL_NO = STUDENT.ROLL_NO;
+
+-- FULL OUTER JOIN
+SELECT ROOM.ROOM_NO,ROOM.HOSTEL_NAME,STUDENT.ROLL_NO,NAME,GENDER
+from STUDENT
+LEFT JOIN ROOM ON ROOM.ROLL_NO = STUDENT.ROLL_NO
+UNION
+SELECT ROOM.ROOM_NO,ROOM.HOSTEL_NAME,STUDENT.ROLL_NO,NAME,GENDER
+from STUDENT
+RIGHT JOIN ROOM ON ROOM.ROLL_NO = STUDENT.ROLL_NO
+ORDER BY ROOM_NO;
+
+-- SELF CARTESIAN PRODUCT
+select A.MESS_ID,A.MESS_TYPE,B.DAILY_CHARGES,B.CONTRACTOR
+FROM MESS as A, MESS as B;
